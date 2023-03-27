@@ -1,0 +1,100 @@
+#root {
+	max-width: 1280px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.App {
+	display: flex;
+	flex-direction: column;
+
+	position: relative;
+	min-height: 100vh;
+}
+
+.headerWrapper {
+	z-index: 50;
+	position: sticky;
+	top: 0px;
+
+	/* display: grid;
+	grid-template-columns: repeat(3, 1fr); */
+	display: flex;
+	justify-content: space-between;
+
+	transition-duration: 0.3s;
+	padding: 0.5em 1em;
+	max-width: 100vw;
+	height: 100%;
+	width: 100%;
+}
+
+.logoAndHamWrapper {
+	display: grid;
+	grid-template-columns: 40px 1fr;
+	gap: var(--flex-gap);
+}
+
+.navWrapper {
+	/* display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); */
+	display: flex;
+	justify-content: space-between;
+	gap: var(--flex-gap);
+}
+
+.logoSearchWrapper,
+.navWrapper > * {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto auto;
+}
+.nav {
+	display: none;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 2.5rem; /* Footer height */
+}
+
+/*  DEFAULT */
+.logo {
+	height: 6em;
+	padding: 1.5em;
+	will-change: filter;
+	transition: filter 300ms;
+}
+.logo:hover {
+	filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+	filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	a:nth-of-type(2) .logo {
+		animation: logo-spin infinite 20s linear;
+	}
+}
+
+.card {
+	padding: 2em;
+}
+
+.read-the-docs {
+	color: #888;
+}
