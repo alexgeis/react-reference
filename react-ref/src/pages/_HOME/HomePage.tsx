@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import ReactLogo from "@/assets/react.svg";
 import "./HomePage.css";
 import Hamburger from "@/components/Hamburger";
+import "react-icons/fa";
+import { FaGithub, FaRegMoon, FaSun } from "react-icons/fa";
 
 export default function HomePage() {
+	const [theme, setTheme] = useState<string>("dark");
+
 	// HAMBURGER LOGIC
 	const [hamOpen, setHamOpen] = useState(false);
 
@@ -20,23 +24,22 @@ export default function HomePage() {
 		<>
 			<div className="App">
 				<header className="headerWrapper">
-					{/* hamburger */}
-					<Hamburger
-						pathname={pathname}
-						pages={pages}
-						hamOpen={hamOpen}
-						menuToggle={hamburgerMenuToggle}
-						closeMenu={closeMenu}
-					/>
-					<div className="logoSearchWrapper">
+					<div className="logoAndHamWrapper">
+						<Hamburger
+							pathname={pathname}
+							pages={pages}
+							hamOpen={hamOpen}
+							menuToggle={hamburgerMenuToggle}
+							closeMenu={closeMenu}
+						/>
 						<img
 							src={ReactLogo}
 							alt="React Logo"
 						/>
-						<div>SEARCH</div>
 					</div>
+					<div>SEARCH</div>
 					<div className="navWrapper">
-						<nav>
+						<nav className="nav">
 							<ul>
 								<li>
 									<a href="link1.html">link 1</a>
@@ -54,15 +57,16 @@ export default function HomePage() {
 						</nav>
 
 						{/* light / dark toggle */}
-						<img
-							src=""
-							alt="Theme Toggle"
-						/>
+						{theme === "dark" ? (
+							<FaSun title="light theme toggle"></FaSun>
+						) : (
+							<FaRegMoon title="dark theme toggle"></FaRegMoon>
+						)}
 						{/* github */}
-						<img
-							src=""
-							alt="GitHub Repository Link"
-						/>
+						<FaGithub
+							title="github logo"
+							color={theme === "dark" ? "white" : "black"}
+						></FaGithub>
 					</div>
 				</header>
 

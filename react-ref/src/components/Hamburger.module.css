@@ -1,7 +1,7 @@
 .hamburgerWrapper {
 	display: flex;
 	align-items: center;
-	margin: 0 20px;
+	margin: 0 auto;
 }
 
 .hamburgerBox {
@@ -12,7 +12,7 @@
 .hamburgerBox div {
 	width: 35px;
 	height: 5px;
-	background-color: var(--light-color);
+	background-color: var(--light-primary-color);
 	margin: 6px 0;
 	transition: 0.4s;
 }
@@ -31,8 +31,8 @@
 	width: 100vw;
 	padding: 130px 0 40px;
 	height: 60vh;
-	background-color: var(--background-dark);
-	border-bottom: 1px solid var(--light-color);
+	background-color: var(--dark-bg-color);
+	border-bottom: 1px solid var(--light-primary-color);
 	text-align: center;
 	z-index: 1000 !important;
 }
@@ -41,17 +41,17 @@
 	opacity: 1;
 	display: block;
 	font-size: 30px;
-	color: var(--light-color);
+	color: var(--light-primary-color);
 	padding-bottom: 2px;
-	border-bottom: 1px solid var(--light-color);
+	border-bottom: 1px solid var(--light-primary-color);
 }
 .hamburgerLinkActive {
 	opacity: 1;
 	display: block;
 	font-size: 30px;
-	color: var(--highlight-blue);
+	color: var(--highlight-primary-color);
 	padding-bottom: 2px;
-	border-bottom: 1px solid var(--highlight-blue);
+	border-bottom: 1px solid var(--highlight-primary-color);
 }
 .hamburgerLineOne {
 	transform: rotate(-45deg) translate(-9px, 6px);
@@ -63,9 +63,9 @@
 	transform: rotate(45deg) translate(-8px, -8px);
 }
 
-@media only screen and (min-width: 650px) {
+/* @media only screen and (min-width: 650px) {
 	.hamburgerWrapper {
 		display: none;
 		position: relative;
 	}
-}
+} */
