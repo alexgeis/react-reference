@@ -6,6 +6,7 @@ type hamburgerProps = {
 	hamOpen: boolean;
 	menuToggle: React.MouseEventHandler<HTMLDivElement>;
 	closeMenu: any;
+	theme: "dark" | "light";
 };
 
 export default function Hamburger({
@@ -14,6 +15,7 @@ export default function Hamburger({
 	hamOpen,
 	menuToggle,
 	closeMenu,
+	theme,
 }: hamburgerProps) {
 	return (
 		<div className={styles.hamburgerWrapper}>
@@ -23,9 +25,30 @@ export default function Hamburger({
 				}`}
 				onClick={menuToggle}
 			>
-				<div className={`${hamOpen ? styles.hamburgerLineOne : ""}`}></div>
-				<div className={`${hamOpen ? styles.hamburgerLineTwo : ""}`}></div>
-				<div className={`${hamOpen ? styles.hamburgerLineThree : ""}`}></div>
+				<div
+					className={`${hamOpen ? styles.hamburgerLineOne : ""}`}
+					style={
+						theme === "light"
+							? { backgroundColor: "black", color: "black" }
+							: {}
+					}
+				></div>
+				<div
+					className={`${hamOpen ? styles.hamburgerLineTwo : ""}`}
+					style={
+						theme === "light"
+							? { backgroundColor: "black", color: "black" }
+							: {}
+					}
+				></div>
+				<div
+					className={`${hamOpen ? styles.hamburgerLineThree : ""}`}
+					style={
+						theme === "light"
+							? { backgroundColor: "black", color: "black" }
+							: {}
+					}
+				></div>
 			</div>
 			<nav
 				className={`${styles.hamburgerMenu} ${

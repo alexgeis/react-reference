@@ -55,6 +55,12 @@
 	display: none;
 }
 
+.lightToggle,
+.darkToggle,
+.githubLink {
+	cursor: pointer;
+}
+
 .footer {
 	position: absolute;
 	bottom: 0;
