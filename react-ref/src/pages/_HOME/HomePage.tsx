@@ -4,6 +4,7 @@ import "./HomePage.css";
 import Hamburger from "@/components/Hamburger";
 import "react-icons/fa";
 import { FaGithub, FaRegMoon, FaSun } from "react-icons/fa";
+import navData from "@/data/navData";
 
 export default function HomePage() {
 	const [theme, setTheme] = useState<"dark" | "light">("dark");
@@ -22,7 +23,6 @@ export default function HomePage() {
 
 	const [searchInput, setSearchInput] = useState<string>("");
 
-	const pages = ["about", "listen", "contact"];
 	const pathname = window.location.href;
 
 	return (
@@ -35,7 +35,7 @@ export default function HomePage() {
 					<div className="logoAndHamWrapper">
 						<Hamburger
 							pathname={pathname}
-							pages={pages}
+							navData={navData}
 							hamOpen={hamOpen}
 							menuToggle={hamburgerMenuToggle}
 							closeMenu={closeMenu}
@@ -86,6 +86,7 @@ export default function HomePage() {
 								className="lightToggle"
 								title="light theme toggle"
 								onClick={themeToggle}
+								size={20}
 							></FaSun>
 						) : (
 							<FaRegMoon
@@ -93,6 +94,7 @@ export default function HomePage() {
 								className="darkToggle"
 								title="dark theme toggle"
 								onClick={themeToggle}
+								size={20}
 							></FaRegMoon>
 						)}
 						{/* github */}
@@ -104,6 +106,7 @@ export default function HomePage() {
 								title="github logo"
 								className="githubLink"
 								color={theme === "dark" ? "white" : "black"}
+								size={20}
 							></FaGithub>
 						</a>
 					</div>

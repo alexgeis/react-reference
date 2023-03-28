@@ -2,7 +2,7 @@ import styles from "./Hamburger.module.css";
 
 type hamburgerProps = {
 	pathname: string | null;
-	pages: string[];
+	navData: NavData;
 	hamOpen: boolean;
 	menuToggle: React.MouseEventHandler<HTMLDivElement>;
 	closeMenu: any;
@@ -11,7 +11,7 @@ type hamburgerProps = {
 
 export default function Hamburger({
 	pathname,
-	pages,
+	navData,
 	hamOpen,
 	menuToggle,
 	closeMenu,
@@ -20,9 +20,10 @@ export default function Hamburger({
 	return (
 		<div className={styles.hamburgerWrapper}>
 			<div
-				className={`${styles.hamburgerBox} ${
-					hamOpen ? styles.hamburgerBoxActive : ""
-				}`}
+				// className={`${styles.hamburgerBox} ${
+				// 	hamOpen ? styles.hamburgerBoxActive : ""
+				// }`}
+				className={styles.hamburgerBox}
 				onClick={menuToggle}
 			>
 				<div
@@ -50,31 +51,99 @@ export default function Hamburger({
 					}
 				></div>
 			</div>
-			<nav
-				className={`${styles.hamburgerMenu} ${
-					hamOpen ? styles.hamburgerMenuActive : ""
+			<aside
+				// className={hamOpen ? styles.hamburgerMenuActive : styles.hamburgerMenu}
+				className={`${hamOpen ? styles.hamburgerMenuActive : ""} ${
+					styles.hamburgerMenu
 				}`}
 			>
-				{pages.map((page: string, i: number) => {
-					return (
-						<div
-							className={
-								pathname == `/${page}`
-									? styles.hamburgerLinkActive
-									: styles.hamburgerLink
-							}
-							key={i}
-						>
-							<a
-								href={`${page}`}
-								onClick={() => closeMenu()}
-							>
-								{page.toUpperCase()}
-							</a>
-						</div>
-					);
-				})}
-			</nav>
+				<nav className={styles.navWrapper}>
+					<ul className={styles.sectionNavWrapper}>
+						{navData.sections.map((section: Section, i: number) => {
+							return (
+								<li
+									className={
+										pathname == `/${section.title}`
+											? styles.sectionLinkActive
+											: styles.sectionLink
+									}
+									key={i}
+								>
+									<a
+										href={`${section.title}`}
+										onClick={() => closeMenu()}
+									>
+										{section.title.toUpperCase()}
+									</a>
+								</li>
+							);
+						})}
+					</ul>
+					{/* 
+						for every section
+								loop through headers
+									add horizontal line
+									list header title
+										loop through topics
+						*/}
+					<div className={styles.sitemapNavWrapper}>
+						{navData.sections.map((section: Section) => {
+							const headers = section?.headers || [];
+							if (!headers.length) return;
+
+							const headerTopicRender = headers.map((header: SectionHeader) => {
+								return (
+									<>
+										<div
+											role="separator"
+											className="separator"
+										></div>
+										<ul>
+											<li
+												className={
+													pathname == `/${section.title}/${header.title}`
+														? styles.hamburgerLinkActive
+														: styles.hamburgerLink
+												}
+												key={header.title}
+											>
+												<h3>
+													<a href={`/${section.title}/${header.title}`}>
+														{header.title}
+													</a>
+												</h3>
+												{header.topics.map((topic: Topic) => {
+													return (
+														<ul>
+															<li
+																className={
+																	pathname ==
+																	`/${section.title}/${header.title}/${topic.title}`
+																		? styles.hamburgerLinkActive
+																		: styles.hamburgerLink
+																}
+																key={topic.title}
+															>
+																<a
+																	href={`/${section.title}/${header.title}/${topic.title}`}
+																>
+																	{topic.title}
+																</a>
+															</li>
+														</ul>
+													);
+												})}
+											</li>
+										</ul>
+									</>
+								);
+							});
+
+							return <>{headerTopicRender}</>;
+						})}
+					</div>
+				</nav>
+			</aside>
 		</div>
 	);
 }
