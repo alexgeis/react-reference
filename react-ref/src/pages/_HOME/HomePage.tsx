@@ -4,10 +4,13 @@ import "./HomePage.css";
 import Hamburger from "@/components/Hamburger";
 import "react-icons/fa";
 import { FaGithub, FaRegMoon, FaSun } from "react-icons/fa";
+import navData from "@/data/navData";
 
 export default function HomePage() {
-	const [theme, setTheme] = useState<string>("dark");
-
+	const [theme, setTheme] = useState<"dark" | "light">("dark");
+	const themeToggle = () => {
+		setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+	};
 	// HAMBURGER LOGIC
 	const [hamOpen, setHamOpen] = useState(false);
 
@@ -18,26 +21,47 @@ export default function HomePage() {
 		setHamOpen(false);
 	};
 
-	const pages = ["about", "listen", "contact"];
+	const [searchInput, setSearchInput] = useState<string>("");
+
 	const pathname = window.location.href;
+
 	return (
 		<>
-			<div className="App">
+			<div
+				className="App"
+				style={theme === "light" ? { backgroundColor: "white" } : {}}
+			>
 				<header className="headerWrapper">
 					<div className="logoAndHamWrapper">
 						<Hamburger
 							pathname={pathname}
-							pages={pages}
+							navData={navData}
 							hamOpen={hamOpen}
 							menuToggle={hamburgerMenuToggle}
 							closeMenu={closeMenu}
+							theme={theme}
 						/>
 						<img
 							src={ReactLogo}
 							alt="React Logo"
 						/>
 					</div>
-					<div>SEARCH</div>
+					<input
+						type="search"
+						placeholder="Search..."
+						onChange={(e) => setSearchInput(e.target.value)}
+						value={searchInput}
+						// TODO: update search placeholder upon theme change - need to set a new class or use computed CSS values (can't be inline styled)
+						style={
+							theme === "light"
+								? {
+										backgroundColor: "#ff0",
+										// color: "black",
+										borderRadius: "10px",
+								  }
+								: { borderRadius: "10px" }
+						}
+					/>
 					<div className="navWrapper">
 						<nav className="nav">
 							<ul>
@@ -58,15 +82,33 @@ export default function HomePage() {
 
 						{/* light / dark toggle */}
 						{theme === "dark" ? (
-							<FaSun title="light theme toggle"></FaSun>
+							<FaSun
+								className="lightToggle"
+								title="light theme toggle"
+								onClick={themeToggle}
+								size={20}
+							></FaSun>
 						) : (
-							<FaRegMoon title="dark theme toggle"></FaRegMoon>
+							<FaRegMoon
+								color="black"
+								className="darkToggle"
+								title="dark theme toggle"
+								onClick={themeToggle}
+								size={20}
+							></FaRegMoon>
 						)}
 						{/* github */}
-						<FaGithub
-							title="github logo"
-							color={theme === "dark" ? "white" : "black"}
-						></FaGithub>
+						<a
+							href="https://github.com/alexgeis/react-reference"
+							target="_blank"
+						>
+							<FaGithub
+								title="github logo"
+								className="githubLink"
+								color={theme === "dark" ? "white" : "black"}
+								size={20}
+							></FaGithub>
+						</a>
 					</div>
 				</header>
 

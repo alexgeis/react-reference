@@ -21,7 +21,7 @@
 
 	--highlight-primary-color: #149eca;
 
-	--flex-gap: 10px;
+	--flex-gap: 12px;
 }
 * {
 	box-sizing: border-box;
@@ -47,7 +47,11 @@ h1 {
 	font-size: 3.2em;
 	line-height: 1.1;
 }
-
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
 button {
 	border-radius: 8px;
 	border: 1px solid transparent;
