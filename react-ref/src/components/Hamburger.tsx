@@ -17,6 +17,9 @@ export default function Hamburger({
 	closeMenu,
 	theme,
 }: hamburgerProps) {
+	if (pathname?.includes("localhost")) console.log("local environment");
+	const urlPath = pathname?.split("/").slice(3).join("/");
+
 	return (
 		<div className={styles.hamburgerWrapper}>
 			<div
@@ -63,7 +66,7 @@ export default function Hamburger({
 							return (
 								<li
 									className={
-										pathname == `/${section.title}`
+										urlPath == `${section.title}`
 											? styles.sectionLinkActive
 											: styles.sectionLink
 									}
@@ -101,13 +104,13 @@ export default function Hamburger({
 										<ul>
 											<li
 												className={
-													pathname == `/${section.title}/${header.title}`
+													urlPath == `${section.title}/${header.title}`
 														? styles.hamburgerLinkActive
 														: styles.hamburgerLink
 												}
 												key={header.title}
 											>
-												<h3>
+												<h3 key={`${header.title}-title-text`}>
 													<a href={`/${section.title}/${header.title}`}>
 														{header.title}
 													</a>
@@ -117,8 +120,8 @@ export default function Hamburger({
 														<ul>
 															<li
 																className={
-																	pathname ==
-																	`/${section.title}/${header.title}/${topic.title}`
+																	urlPath ==
+																	`${section.title}/${header.title}/${topic.title}`
 																		? styles.hamburgerLinkActive
 																		: styles.hamburgerLink
 																}

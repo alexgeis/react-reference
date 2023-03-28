@@ -86,19 +86,22 @@
 }
 .sectionLink {
 	opacity: 1;
-	display: block;
-	font-size: 30px;
+	/* display: block; */
+	/* font-size: 30px; */
+	padding: 0 5px;
 	color: var(--light-primary-color);
-	padding-bottom: 2px;
+	/* padding-bottom: 2px; */
 	/* border-bottom: 1px solid var(--light-primary-color); */
 }
 .sectionLinkActive {
 	opacity: 1;
-	display: block;
-	font-size: 30px;
+	/* display: block; */
+	/* font-size: 30px; */
+	padding: 0 5px;
 	color: var(--highlight-primary-color);
-	padding-bottom: 2px;
-	border-bottom: 1px solid var(--highlight-primary-color);
+	background-color: var(--highlight-secondary-color);
+	border-radius: 15px;
+	/* border-bottom: 1px solid var(--highlight-primary-color); */
 }
 
 .sitemapNavWrapper {
