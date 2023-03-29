@@ -52,8 +52,18 @@ describe("Hamburger Menu Component", () => {
 	});
 
 	// Test 2
-	text("Hide hamburger when hamOpen state is set to false", () => {
+	test("Show hamburger menu when hamOpen state is set to true", () => {
+		renderHelper(true, "dark");
+		const hamburgerActiveMenu = screen.getByTestId("hamburger-active-menu");
+		expect(hamburgerActiveMenu).toHaveStyle("display: block");
+	});
+	// Test 3
+	test("Hide hamburger menu when hamOpen state is set to false", () => {
 		renderHelper(false, "dark");
+		const hamburgerActiveMenu = screen.getByRole("navigation", {
+			hidden: true,
+		});
+		expect(hamburgerActiveMenu).toHaveStyle("display: none");
 	});
 });
 

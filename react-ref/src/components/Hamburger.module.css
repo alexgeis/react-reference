@@ -5,16 +5,18 @@
 }
 
 .hamburgerBox {
+	background-color: transparent;
+
 	display: inline-block;
 	cursor: pointer;
 	z-index: 1003;
 }
 /* individual ham menu lines */
 .hamburgerBox div {
-	width: 35px;
-	height: 2px;
+	width: 22px;
+	height: 1px;
 	background-color: var(--light-primary-color);
-	margin: 6px 0;
+	margin: 5px 0;
 	transition: 0.4s;
 }
 /* active menu line animations */
