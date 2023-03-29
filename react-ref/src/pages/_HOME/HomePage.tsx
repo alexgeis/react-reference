@@ -5,6 +5,7 @@ import Hamburger from "@/components/Hamburger";
 import "react-icons/fa";
 import { FaGithub, FaRegMoon, FaSun } from "react-icons/fa";
 import navData from "@/data/navData";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 export default function HomePage() {
 	const [theme, setTheme] = useState<"dark" | "light">("dark");
@@ -12,7 +13,8 @@ export default function HomePage() {
 		setTheme((prev) => (prev === "dark" ? "light" : "dark"));
 	};
 	// HAMBURGER LOGIC
-	const [hamOpen, setHamOpen] = useState(false);
+	// const [hamOpen, setHamOpen] = useState(false);
+	const [hamOpen, setHamOpen] = useLocalStorage("hamOpen", false);
 
 	const hamburgerMenuToggle = () => {
 		setHamOpen(!hamOpen);
@@ -24,6 +26,13 @@ export default function HomePage() {
 	const [searchInput, setSearchInput] = useState<string>("");
 
 	const pathname = window.location.href;
+
+	const handleHomeClick = (e: any) => {
+		e.preventDefault();
+		closeMenu();
+		if (typeof window === "undefined") return;
+		window.location.assign("/");
+	};
 
 	return (
 		<>
@@ -41,10 +50,15 @@ export default function HomePage() {
 							closeMenu={closeMenu}
 							theme={theme}
 						/>
-						<img
-							src={ReactLogo}
-							alt="React Logo"
-						/>
+						<a
+							href="#"
+							onClick={handleHomeClick}
+						>
+							<img
+								src={ReactLogo}
+								alt="React Logo"
+							/>
+						</a>
 					</div>
 					<input
 						type="search"
