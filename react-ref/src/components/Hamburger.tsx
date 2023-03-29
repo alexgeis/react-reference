@@ -1,6 +1,5 @@
 import { stringToUrl } from "@/utils/stringToUrl";
 import styles from "./Hamburger.module.css";
-console.log(stringToUrl("hello there sonny"));
 
 type hamburgerProps = {
 	pathname: string | null;
@@ -101,7 +100,7 @@ export default function Hamburger({
 									else headerTitleUrlPath = header.title;
 
 									return (
-										<>
+										<div key={`${headerTitleUrlPath}-WRAP`}>
 											<div
 												role="separator"
 												className={styles.separator}
@@ -151,7 +150,7 @@ export default function Hamburger({
 													})}
 												</li>
 											</ul>
-										</>
+										</div>
 									);
 								}
 							);
