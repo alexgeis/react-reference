@@ -46,7 +46,7 @@
 	left: 0;
 	transition: opacity 600ms ease-in-out;
 	width: 100vw;
-	padding: 0 10px;
+	/* padding: 0 10px; */
 	height: 100vh;
 	max-height: 100vh;
 	background-color: var(--dark-bg-color);
@@ -75,72 +75,106 @@
 	/* position: sticky;
 	top: 0px; */
 	background-color: var(--dark-bg-color);
-	padding: 10px 0;
-	border-bottom: 1px solid var(--dark-bg-secondary-color);
+	padding: 10px;
+	/* border-bottom: 1px solid var(--dark-bg-secondary-color); */
 }
 .sectionNavWrapper > li > a {
-	color: var(--light-primary-color);
 	text-transform: capitalize;
 	line-height: calc(3 * var(--flex-gap));
-	font-size: 1rem;
+	font-size: 0.9rem;
 }
 .sectionLink {
 	opacity: 1;
-	padding: 0 6px;
+	/* padding: 0 6px; */
 	color: var(--light-primary-color);
 	width: 100%;
 	transition: transform 200ms ease-in;
 	cursor: pointer;
-}
-.sectionLink > a,
-.sectionLinkActive > a {
-	display: inline-block;
-	width: 100%;
-	height: 100%;
-	color: black;
 }
 .sectionLink:hover {
 	background-color: var(--dark-bg-secondary-color);
 	border-radius: 15px;
 }
+.sectionLink > a,
+.sectionLinkActive > a {
+	color: var(--light-primary-color);
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
 .sectionLinkActive {
 	opacity: 1;
 	width: 100%;
-	padding: 0 6px;
+	/* padding: 0 6px; */
 	color: var(--highlight-primary-color);
-	background-color: var(--highlight-secondary-color);
+	background-color: var(--highlight-bg-color);
 	border-radius: 15px;
 	transition: transform 200ms ease-in;
 	cursor: pointer;
+}
+.sectionLinkActive > a {
+	color: inherit;
 }
 .sectionLink:active,
 .sectionLinkActive:active {
 	transform: scale(0.95);
 }
 
+/* SITEMAP */
 .sitemapNavWrapper {
 	text-align: left;
+	width: 100%;
+	padding-left: 10px;
+}
+.sitemapNavHeader {
+	color: var(--gray-primary-color);
+	font-size: 0.9rem;
+}
+
+.sitemapNavTopic > a {
+	color: var(--light-primary-color);
+	font-size: 1.1rem;
+	/* display: inline-block; */
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	padding-left: 20px;
+}
+
+.sitemapNavTopic:hover {
+	margin-left: -10px;
+	margin-right: 10px;
+	padding-left: 10px;
+	background-color: var(--dark-bg-secondary-color);
 }
 
 .hamburgerLink {
 	opacity: 1;
 	display: block;
-	font-size: 30px;
+	/* font-size: 30px; */
 	color: var(--light-primary-color);
 	padding-bottom: 2px;
 	/* border-bottom: 1px solid var(--light-primary-color); */
 }
-.hamburgerLinkActive {
+.hamburgerLinkActive > a {
 	opacity: 1;
-	display: block;
-	font-size: 30px;
 	color: var(--highlight-primary-color);
-	padding-bottom: 2px;
-	border-bottom: 1px solid var(--highlight-primary-color);
+	padding-left: 20px;
+	margin-left: -10px;
+	background-color: var(--highlight-bg-color);
+	/* border-radius: 15px; */
 }
 
 .separator {
+	height: 1px;
+	width: 96%;
 	border-bottom: 1px solid var(--dark-bg-secondary-color);
+}
+.separator,
+.sitemapNavHeader,
+.sitemapNavTopic {
+	margin: 4px 0;
 }
 /* @media only screen and (min-width: 650px) {
 	.hamburgerWrapper {

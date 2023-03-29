@@ -1,4 +1,6 @@
+import { stringToUrl } from "@/utils/stringToUrl";
 import styles from "./Hamburger.module.css";
+console.log(stringToUrl("hello there sonny"));
 
 type hamburgerProps = {
 	pathname: string | null;
@@ -95,40 +97,57 @@ export default function Hamburger({
 							if (!headers.length) return;
 
 							const headerTopicRender = headers.map((header: SectionHeader) => {
+								let headerTitleUrlPath: string;
+								if (header.title.includes(" "))
+									headerTitleUrlPath = stringToUrl(header.title);
+								else headerTitleUrlPath = header.title;
+
 								return (
 									<>
 										<div
 											role="separator"
-											className="separator"
+											className={styles.separator}
 										></div>
 										<ul>
 											<li
 												className={
-													urlPath == `${section.title}/${header.title}`
+													urlPath == `${section.title}/${headerTitleUrlPath}`
 														? styles.hamburgerLinkActive
 														: styles.hamburgerLink
 												}
-												key={header.title}
+												key={headerTitleUrlPath}
 											>
-												<h3 key={`${header.title}-title-text`}>
-													<a href={`/${section.title}/${header.title}`}>
-														{header.title}
-													</a>
+												<h3
+													key={`${headerTitleUrlPath}-header`}
+													className={styles.sitemapNavHeader}
+												>
+													{header.title}
+													{/* <a
+														href={`/${section.title}/${headerTitleUrlPath}`}
+														onClick={() => closeMenu()}
+													>
+													</a> */}
 												</h3>
 												{header.topics.map((topic: Topic) => {
+													let topicTitleUrlPath: string;
+													if (topic.title.includes(" "))
+														topicTitleUrlPath = stringToUrl(topic.title);
+													else topicTitleUrlPath = topic.title;
+
 													return (
 														<ul>
 															<li
-																className={
+																className={`${styles.sitemapNavTopic} ${
 																	urlPath ==
-																	`${section.title}/${header.title}/${topic.title}`
+																	`${section.title}/${headerTitleUrlPath}/${topicTitleUrlPath}`
 																		? styles.hamburgerLinkActive
 																		: styles.hamburgerLink
-																}
-																key={topic.title}
+																}`}
+																key={topicTitleUrlPath}
 															>
 																<a
-																	href={`/${section.title}/${header.title}/${topic.title}`}
+																	href={`/${section.title}/${headerTitleUrlPath}/${topicTitleUrlPath}`}
+																	onClick={() => closeMenu()}
 																>
 																	{topic.title}
 																</a>

@@ -15,12 +15,14 @@
 
 	--light-primary-color: #f6f7f9;
 	--light-secondary-color: #ebecf0;
+	--gray-primary-color: #555a66;
 
 	--dark-bg-color: #23272e;
 	--dark-bg-secondary-color: #363a47;
 
 	--highlight-primary-color: #149eca;
 	--highlight-secondary-color: #0484af;
+	--highlight-bg-color: #2a3743;
 
 	--flex-gap: 12px;
 }
@@ -31,12 +33,12 @@
 }
 a {
 	font-weight: 500;
-	color: #646cff;
+	/* color: #646cff; */
 	text-decoration: inherit;
 }
-a:hover {
+/* a:hover {
 	color: #535bf2;
-}
+} */
 
 body {
 	margin: 0;

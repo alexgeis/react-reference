@@ -20,16 +20,16 @@ export default {
 					],
 				},
 				{
-					title: "header 2!",
+					title: "section 1 header 2",
 					topics: [
 						{
-							title: "header 2's topic 1",
+							title: "section 1 header 2 topic 1",
 							subtopics: [
 								{
-									title: "header 2's subtopic 1",
+									title: "section 1 header 2 subtopic 1",
 								},
 								{
-									title: "header 2's subtopic 2",
+									title: "section 1 header 2 subtopic 2",
 								},
 							],
 						},
@@ -44,29 +44,29 @@ export default {
 					title: "demos",
 					topics: [
 						{
-							title: "builds's topic 1",
+							title: "builds topic 1",
 							subtopics: [
 								{
-									title: "builds's subtopic 1",
+									title: "builds subtopic 1",
 								},
 								{
-									title: "builds's subtopic 2",
+									title: "builds subtopic 2",
 								},
 							],
 						},
 					],
 				},
 				{
-					title: "builds header 2!",
+					title: "builds header 2",
 					topics: [
 						{
-							title: "builds header 2's topic 1",
+							title: "builds header 2 topic 1",
 							subtopics: [
 								{
-									title: "builds header 2's subtopic 1",
+									title: "builds header 2 subtopic 1",
 								},
 								{
-									title: "builds header 2's subtopic 2",
+									title: "builds header 2 subtopic 2",
 								},
 							],
 						},
@@ -78,32 +78,32 @@ export default {
 			title: "hooks",
 			headers: [
 				{
-					title: "demos",
+					title: "hooks header 1",
 					topics: [
 						{
-							title: "hooks's topic 1",
+							title: "hooks topic 1",
 							subtopics: [
 								{
-									title: "hooks's subtopic 1",
+									title: "hooks subtopic 1",
 								},
 								{
-									title: "hooks's subtopic 2",
+									title: "hooks subtopic 2",
 								},
 							],
 						},
 					],
 				},
 				{
-					title: "hooks header 2!",
+					title: "hooks header 2",
 					topics: [
 						{
-							title: "hooks header 2's topic 1",
+							title: "hooks header 2 topic 1",
 							subtopics: [
 								{
-									title: "hooks header 2's subtopic 1",
+									title: "hooks header 2 subtopic 1",
 								},
 								{
-									title: "hooks header 2's subtopic 2",
+									title: "hooks header 2 subtopic 2",
 								},
 							],
 						},
@@ -115,32 +115,32 @@ export default {
 			title: "reference",
 			headers: [
 				{
-					title: "demos",
+					title: "reference header 1",
 					topics: [
 						{
-							title: "reference's topic 1",
+							title: "reference topic 1",
 							subtopics: [
 								{
-									title: "reference's subtopic 1",
+									title: "reference subtopic 1",
 								},
 								{
-									title: "reference's subtopic 2",
+									title: "reference subtopic 2",
 								},
 							],
 						},
 					],
 				},
 				{
-					title: "reference header 2!",
+					title: "reference header 2",
 					topics: [
 						{
-							title: "reference header 2's topic 1",
+							title: "reference header 2 topic 1",
 							subtopics: [
 								{
-									title: "reference header 2's subtopic 1",
+									title: "reference header 2 subtopic 1",
 								},
 								{
-									title: "reference header 2's subtopic 2",
+									title: "reference header 2 subtopic 2",
 								},
 							],
 						},
