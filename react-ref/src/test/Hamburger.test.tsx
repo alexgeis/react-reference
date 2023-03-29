@@ -29,21 +29,31 @@ describe("Hamburger Menu Component", () => {
 			},
 		],
 	};
-	render(
-		<Hamburger
-			pathname={"http://localhost:5173/"}
-			navData={testNavData}
-			hamOpen={true}
-			menuToggle={menuToggle}
-			closeMenu={closeMenu}
-			theme={"dark"}
-		/>
-	);
-	const hamburger = screen.getByTestId("hamburger");
+	const pathname = "http://localhost:5173/";
+
+	const renderHelper = (hamOpen: boolean, theme: "light" | "dark") => {
+		return render(
+			<Hamburger
+				pathname={pathname}
+				navData={testNavData}
+				menuToggle={menuToggle}
+				closeMenu={closeMenu}
+				hamOpen={hamOpen}
+				theme={theme}
+			/>
+		);
+	};
 
 	// Test 1
 	test("Hamburger Rendering", () => {
+		renderHelper(true, "dark");
+		const hamburger = screen.getByTestId("hamburger");
 		expect(hamburger).toBeInTheDocument();
+	});
+
+	// Test 2
+	text("Hide hamburger when hamOpen state is set to false", () => {
+		renderHelper(false, "dark");
 	});
 });
 
