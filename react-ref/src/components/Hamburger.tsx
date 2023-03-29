@@ -22,8 +22,17 @@ export default function Hamburger({
 	if (pathname?.includes("localhost")) console.log("local environment");
 	const urlPath = pathname?.split("/").slice(3).join("/");
 
+	const themeStyle = {
+		theme: (theme: string): any => ({
+			backgroundColor: theme === "light" ? "black" : "",
+			color: theme === "light" ? "black" : "",
+		}),
+	};
 	return (
-		<div className={styles.hamburgerWrapper}>
+		<div
+			className={styles.hamburgerWrapper}
+			data-testid="hamburger"
+		>
 			<div
 				// className={`${styles.hamburgerBox} ${
 				// 	hamOpen ? styles.hamburgerBoxActive : ""
@@ -33,27 +42,15 @@ export default function Hamburger({
 			>
 				<div
 					className={`${hamOpen ? styles.hamburgerLineOne : ""}`}
-					style={
-						theme === "light"
-							? { backgroundColor: "black", color: "black" }
-							: {}
-					}
+					style={themeStyle.theme(theme)}
 				></div>
 				<div
 					className={`${hamOpen ? styles.hamburgerLineTwo : ""}`}
-					style={
-						theme === "light"
-							? { backgroundColor: "black", color: "black" }
-							: {}
-					}
+					style={themeStyle.theme(theme)}
 				></div>
 				<div
 					className={`${hamOpen ? styles.hamburgerLineThree : ""}`}
-					style={
-						theme === "light"
-							? { backgroundColor: "black", color: "black" }
-							: {}
-					}
+					style={themeStyle.theme(theme)}
 				></div>
 			</div>
 			<aside
@@ -96,72 +93,70 @@ export default function Hamburger({
 							const headers = section?.headers || [];
 							if (!headers.length) return;
 
-							const headerTopicRender = headers.map((header: SectionHeader) => {
-								let headerTitleUrlPath: string;
-								if (header.title.includes(" "))
-									headerTitleUrlPath = stringToUrl(header.title);
-								else headerTitleUrlPath = header.title;
+							const headerTopicRender = headers.map(
+								(header: SectionHeader, i: number) => {
+									let headerTitleUrlPath: string;
+									if (header.title.includes(" "))
+										headerTitleUrlPath = stringToUrl(header.title);
+									else headerTitleUrlPath = header.title;
 
-								return (
-									<>
-										<div
-											role="separator"
-											className={styles.separator}
-										></div>
-										<ul>
-											<li
-												className={
-													urlPath == `${section.title}/${headerTitleUrlPath}`
-														? styles.hamburgerLinkActive
-														: styles.hamburgerLink
-												}
-												key={headerTitleUrlPath}
-											>
-												<h3
-													key={`${headerTitleUrlPath}-header`}
-													className={styles.sitemapNavHeader}
+									return (
+										<>
+											<div
+												role="separator"
+												className={styles.separator}
+												key={`separator-${i}`}
+											></div>
+											<ul key={`${headerTitleUrlPath}-UL`}>
+												<li
+													className={
+														urlPath == `${section.title}/${headerTitleUrlPath}`
+															? styles.hamburgerLinkActive
+															: styles.hamburgerLink
+													}
+													key={`${headerTitleUrlPath}-LI`}
 												>
-													{header.title}
-													{/* <a
-														href={`/${section.title}/${headerTitleUrlPath}`}
-														onClick={() => closeMenu()}
+													<h3
+														key={`${headerTitleUrlPath}-header`}
+														className={styles.sitemapNavHeader}
 													>
-													</a> */}
-												</h3>
-												{header.topics.map((topic: Topic) => {
-													let topicTitleUrlPath: string;
-													if (topic.title.includes(" "))
-														topicTitleUrlPath = stringToUrl(topic.title);
-													else topicTitleUrlPath = topic.title;
+														{header.title}
+													</h3>
+													{header.topics.map((topic: Topic) => {
+														let topicTitleUrlPath: string;
+														if (topic.title.includes(" "))
+															topicTitleUrlPath = stringToUrl(topic.title);
+														else topicTitleUrlPath = topic.title;
 
-													return (
-														<ul>
-															<li
-																className={`${styles.sitemapNavTopic} ${
-																	urlPath ==
-																	`${section.title}/${headerTitleUrlPath}/${topicTitleUrlPath}`
-																		? styles.hamburgerLinkActive
-																		: styles.hamburgerLink
-																}`}
-																key={topicTitleUrlPath}
-															>
-																<a
-																	href={`/${section.title}/${headerTitleUrlPath}/${topicTitleUrlPath}`}
-																	onClick={() => closeMenu()}
+														return (
+															<ul key={`${topicTitleUrlPath}-UL`}>
+																<li
+																	className={`${styles.sitemapNavTopic} ${
+																		urlPath ==
+																		`${section.title}/${headerTitleUrlPath}/${topicTitleUrlPath}`
+																			? styles.hamburgerLinkActive
+																			: styles.hamburgerLink
+																	}`}
+																	key={`${topicTitleUrlPath}-LI`}
 																>
-																	{topic.title}
-																</a>
-															</li>
-														</ul>
-													);
-												})}
-											</li>
-										</ul>
-									</>
-								);
-							});
+																	<a
+																		href={`/${section.title}/${headerTitleUrlPath}/${topicTitleUrlPath}`}
+																		onClick={() => closeMenu()}
+																	>
+																		{topic.title}
+																	</a>
+																</li>
+															</ul>
+														);
+													})}
+												</li>
+											</ul>
+										</>
+									);
+								}
+							);
 
-							return <>{headerTopicRender}</>;
+							return headerTopicRender;
 						})}
 					</div>
 				</nav>
