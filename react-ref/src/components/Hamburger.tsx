@@ -132,7 +132,6 @@ export default function Hamburger({
 											<div
 												role="separator"
 												className={styles.separator}
-												key={`separator-${i}`}
 											></div>
 											<ul key={`${headerTitleUrlPath}-UL`}>
 												<li
