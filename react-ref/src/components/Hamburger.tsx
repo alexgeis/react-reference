@@ -1,6 +1,7 @@
 import { stringToUrl } from "@/utils/stringToUrl";
 import { useEffect } from "react";
 import styles from "./Hamburger.module.css";
+import SitemapNavHam from "./SitemapNav";
 
 type hamburgerProps = {
 	pathname: string | null;
@@ -25,6 +26,7 @@ export default function Hamburger({
 	theme,
 }: hamburgerProps) {
 	if (pathname?.includes("localhost")) console.log("local environment");
+
 	const urlPath = pathname?.split("/").slice(3).join("/");
 
 	const handleHamMenuFocus = (e: any) => {};
@@ -35,15 +37,6 @@ export default function Hamburger({
 			color: theme === "light" ? "black" : "",
 		}),
 	};
-	// TODO: abstract further so function can take any callback function to execute when space/enter is pressed
-	// function toggleOnEnter(event: React.KeyboardEvent): any {
-	// 	const keyCode: string = event.code;
-	// 	if (keyCode === "Enter" || keyCode == "Space") {
-	// 		menuToggle(event);
-	// 	}
-	// 	// The event has not been handled, so return true
-	// 	return true;
-	// }
 
 	return (
 		<div
@@ -108,84 +101,11 @@ export default function Hamburger({
 							);
 						})}
 					</ul>
-					{/* 
-						for every section
-								loop through headers
-									add horizontal line
-									list header title
-										loop through topics
-						*/}
-					<div className={styles.sitemapNavWrapper}>
-						{navData.sections.map((section: Section) => {
-							const headers = section?.headers || [];
-							if (!headers.length) return;
-
-							const headerTopicRender = headers.map(
-								(header: SectionHeader, i: number) => {
-									let headerTitleUrlPath: string;
-									if (header.title.includes(" "))
-										headerTitleUrlPath = stringToUrl(header.title);
-									else headerTitleUrlPath = header.title;
-
-									return (
-										<div key={`${headerTitleUrlPath}-WRAP`}>
-											<div
-												role="separator"
-												className={styles.separator}
-												key={`separator-${i}`}
-											></div>
-											<ul key={`${headerTitleUrlPath}-UL`}>
-												<li
-													className={
-														urlPath == `${section.title}/${headerTitleUrlPath}`
-															? styles.hamburgerLinkActive
-															: styles.hamburgerLink
-													}
-													key={`${headerTitleUrlPath}-LI`}
-												>
-													<h3
-														key={`${headerTitleUrlPath}-header`}
-														className={styles.sitemapNavHeader}
-													>
-														{header.title}
-													</h3>
-													{header.topics.map((topic: Topic) => {
-														let topicTitleUrlPath: string;
-														if (topic.title.includes(" "))
-															topicTitleUrlPath = stringToUrl(topic.title);
-														else topicTitleUrlPath = topic.title;
-
-														return (
-															<ul key={`${topicTitleUrlPath}-UL`}>
-																<li
-																	className={`${styles.sitemapNavTopic} ${
-																		urlPath ==
-																		`${section.title}/${headerTitleUrlPath}/${topicTitleUrlPath}`
-																			? styles.hamburgerLinkActive
-																			: styles.hamburgerLink
-																	}`}
-																	key={`${topicTitleUrlPath}-LI`}
-																>
-																	<a
-																		href={`/${section.title}/${headerTitleUrlPath}/${topicTitleUrlPath}`}
-																		onClick={() => closeMenu()}
-																	>
-																		{topic.title}
-																	</a>
-																</li>
-															</ul>
-														);
-													})}
-												</li>
-											</ul>
-										</div>
-									);
-								}
-							);
-
-							return headerTopicRender;
-						})}
-					</div>
+					<SitemapNavHam
+						navData={navData}
+						urlPath={urlPath}
+						closeMenu={closeMenu}
+					/>
 				</nav>
 			</aside>
 		</div>

@@ -7,29 +7,43 @@
 .hamburgerBox {
 	background-color: transparent;
 
-	display: inline-block;
+	/* display: inline-block; */
+	display: flex;
+	flex-direction: column;
+	gap: var(--hamburger-gap);
+
+	width: max-content;
 	cursor: pointer;
 	z-index: 1003;
 }
 /* individual ham menu lines */
 .hamburgerBox div {
-	width: 22px;
-	height: 1px;
+	width: var(--hamburger-bar-width);
+	height: var(--hamburger-bar-height);
 	background-color: var(--light-primary-color);
-	margin: 5px 0;
+	/* margin: 5px 0; */
 	transition: 0.4s;
+	transform-origin: left center;
 }
 /* active menu line animations */
 .hamburgerLineOne {
-	-webkit-transform: rotate(-45deg) translate(-5px, 6px);
-	transform: rotate(-45deg) translate(-5px, 6px);
+	-webkit-transform: rotate(-45deg);
+	-webkit-translate: 0 calc(var(--hamburger-menu-height));
+	transform: rotate(-45deg);
+	translate: 0 calc(var(--hamburger-menu-height));
+	width: var(--ham-x-width);
 }
 .hamburgerLineTwo {
 	opacity: 0;
 }
 .hamburgerLineThree {
-	-webkit-transform: rotate(45deg) translate(-5px, -6px);
-	transform: rotate(45deg) translate(-5px, -6px);
+	-webkit-transform: rotate(45deg);
+	-webkit-translate: 0
+		calc(var(--hamburger-menu-height) * -1 + var(--hamburger-bar-height));
+	transform: rotate(45deg);
+	translate: 0
+		calc(var(--hamburger-menu-height) * -1 + var(--hamburger-bar-height));
+	width: var(--ham-x-width);
 }
 
 .hamburgerMenu {
