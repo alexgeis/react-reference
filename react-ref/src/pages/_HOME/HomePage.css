@@ -45,6 +45,10 @@
 	gap: var(--flex-gap);
 }
 
+.searchWrapper button {
+	background: transparent;
+}
+
 .logoSearchWrapper,
 .navWrapper > * {
 	display: flex;

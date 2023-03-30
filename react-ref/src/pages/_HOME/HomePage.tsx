@@ -3,7 +3,7 @@ import ReactLogo from "@/assets/react.svg";
 import "./HomePage.css";
 import Hamburger from "@/components/Hamburger";
 import "react-icons/fa";
-import { FaGithub, FaRegMoon, FaSun } from "react-icons/fa";
+import { FaGithub, FaRegMoon, FaSearch, FaSun } from "react-icons/fa";
 import navData from "@/data/navData";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 
@@ -60,7 +60,8 @@ export default function HomePage() {
 							/>
 						</a>
 					</div>
-					<input
+
+					{/* <input
 						type="search"
 						placeholder="Search..."
 						onChange={(e) => setSearchInput(e.target.value)}
@@ -75,8 +76,19 @@ export default function HomePage() {
 								  }
 								: { borderRadius: "10px" }
 						}
-					/>
+					/> */}
 					<div className="navWrapper">
+						<div className="searchWrapper">
+							<button>
+								<FaSearch
+									title="search open button"
+									className="searchIcon"
+									color={theme === "dark" ? "white" : "black"}
+									size={20}
+								></FaSearch>
+							</button>
+							<aside></aside>
+						</div>
 						<nav className="nav">
 							<ul>
 								<li>
