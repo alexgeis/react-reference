@@ -96,18 +96,25 @@ export default function Modal({}) {
 							>
 								<li
 									className={styles.docSearchItem}
-									id="docsearch-item-$"
+									id="docsearch-item-$" // TODO:
 									role="option"
 									aria-selected={false} // TODO:
 								>
 									<a href="">
 										<div className={styles.docSearchItemContainer}>
 											<div className={styles.docSearchItemIcon}></div>
-											<div className={styles.docSearchItemContentWrapper}></div>
+											<div className={styles.docSearchItemContentWrapper}>
+												<span className={styles.docSearchItemTitle}>
+													Example
+												</span>
+												<span className={styles.docSearchItemPath}>
+													sub header example
+												</span>
+											</div>
 											<div className={styles.docSearchItemAction}>
 												<button
 													className={styles.docSearchItemActionBtn}
-													title="Remove this search from history"
+													title="Save this search"
 												>
 													<FaRegStar
 														color="white"
@@ -131,64 +138,58 @@ export default function Modal({}) {
 								</li>
 							</ul>
 						</section>
+						<section className={styles.docSearchResults}>
+							<div className={styles.docSearchResultSource}>Favorites</div>
+							<ul
+								role="listbox"
+								aria-aria-labelledby="docsearch-label"
+								id="docsearch-list"
+							>
+								<li
+									className={styles.docSearchItem}
+									id="docsearch-item-$" // TODO:
+									role="option"
+									aria-selected={false} // TODO:
+								>
+									<a href="">
+										<div className={styles.docSearchItemContainer}>
+											<div className={styles.docSearchItemIcon}></div>
+											<div className={styles.docSearchItemContentWrapper}>
+												<span className={styles.docSearchItemTitle}>
+													Example
+												</span>
+												<span className={styles.docSearchItemPath}>
+													sub header example
+												</span>
+											</div>
+											<div className={styles.docSearchItemAction}>
+												<button
+													className={styles.docSearchItemActionBtn}
+													title="Remove this search from favorites"
+												>
+													<AiOutlineClose
+														color="white"
+														size={18}
+													></AiOutlineClose>
+												</button>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</section>
 					</div>
 				</div>
-				<section className={styles.body}>
-					<form
-						action=""
-						method="post"
-					>
-						<fieldset>
-							{/* TITLE */}
-							<label
-								htmlFor="title"
-								className={styles.formLabel}
-							>
-								Title:
-								<input
-									type="text"
-									name="title"
-									value={activeItem.title}
-									onChange={handleChange}
-								/>
-							</label>
-							{/* DESCRIPTION */}
-							<label
-								htmlFor="description"
-								className={styles.formLabel}
-							>
-								Description:
-								<input
-									type="text"
-									name="description"
-									value={activeItem.description}
-									onChange={handleChange}
-									placeholder="Enter Task Description"
-								/>
-							</label>
-							{/* COMPLETED */}
-							<label
-								htmlFor="completed"
-								className={styles.formLabel}
-							>
-								Completed:
-								<input
-									type="checkbox"
-									name="completed"
-									checked={activeItem.completed}
-									onChange={handleChange}
-								/>
-							</label>
-						</fieldset>
-					</form>
-				</section>
 				<div className={styles.footer}>
-					<button
-						className={styles.btnSubmit}
-						onClick={() => onSave(activeItem)}
-					>
-						Save
-					</button>
+					<span>hi there</span>
+					<ul className={styles.docSearchCommans}>
+						<li>
+							<span className={styles.docSearchCommandsKey}>
+								<span>key icon</span>
+							</span>
+							<span className={styles.docSearchLabel}>key label</span>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
