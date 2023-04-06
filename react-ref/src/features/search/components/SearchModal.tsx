@@ -1,18 +1,30 @@
 import { useState } from "react";
-import styles from "./Modal.module.css";
+import styles from "./SearchModal.module.css";
 import { FaRegStar, FaSearch } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 
 // No on save - user does not submit anything but rather clicks on links in search results
 // no active item / set active item - nothing to submit
 
-export default function Modal({}) {
-	const [modalOpen, setModalOpen] = useState<boolean>(false);
-	const [searchInput, setSearchInput] = useState<string>("");
+type SearchModalProps = {
+	// searchMenuOpen: boolean;
+	searchInput: string;
+	setSearchInput: (input: string) => void;
+	closeSearch: () => void;
+};
 
-	const toggle = () => {
-		setModalOpen((modalOpen) => !modalOpen);
-	};
+export default function SearchModal({
+	// searchMenuOpen,
+	searchInput,
+	setSearchInput,
+	closeSearch,
+}: SearchModalProps) {
+	// const [modalOpen, setModalOpen] = useState<boolean>(false);
+	// const [searchInput, setSearchInput] = useState<string>("");
+
+	// const toggle = () => {
+	// 	setModalOpen((modalOpen) => !modalOpen);
+	// };
 
 	const handleSearchInput = (e: any) => {
 		const value = e.target.value;
@@ -22,7 +34,7 @@ export default function Modal({}) {
 	return (
 		<div
 			className={styles.modalOverlay}
-			onClick={toggle}
+			onClick={closeSearch}
 		>
 			<div
 				className={styles.modalContentContainer}
@@ -81,9 +93,11 @@ export default function Modal({}) {
 							<AiOutlineClose
 								size={20}
 								color={"white"}
+								onClick={closeSearch}
 							></AiOutlineClose>
 						</button>
 					</form>
+					<button className={styles.docSearchCancel}>Cancel</button>
 				</header>
 				<div className={styles.docSearchDropdown}>
 					<div className={styles.docSearchDropdownContainer}>
@@ -91,7 +105,7 @@ export default function Modal({}) {
 							<div className={styles.docSearchResultSource}>Recent</div>
 							<ul
 								role="listbox"
-								aria-aria-labelledby="docsearch-label"
+								aria-labelledby="docsearch-label"
 								id="docsearch-list"
 							>
 								<li
@@ -142,7 +156,7 @@ export default function Modal({}) {
 							<div className={styles.docSearchResultSource}>Favorites</div>
 							<ul
 								role="listbox"
-								aria-aria-labelledby="docsearch-label"
+								aria-labelledby="docsearch-label"
 								id="docsearch-list"
 							>
 								<li

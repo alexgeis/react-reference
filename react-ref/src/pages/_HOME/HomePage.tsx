@@ -6,6 +6,7 @@ import "react-icons/fa";
 import { FaGithub, FaRegMoon, FaSearch, FaSun } from "react-icons/fa";
 import navData from "@/data/navData";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import SearchModal from "@/features/search/components/SearchModal";
 
 export default function HomePage() {
 	const [theme, setTheme] = useState<"dark" | "light">("dark");
@@ -24,6 +25,17 @@ export default function HomePage() {
 	};
 
 	const [searchInput, setSearchInput] = useState<string>("");
+	const [searchMenuOpen, setSearchMenuOpen] = useState<boolean>(false);
+	const closeSearch = () => {
+		setSearchMenuOpen(false);
+		// setSearchInput("");
+	};
+	const openSearch = () => {
+		setSearchMenuOpen(true);
+	};
+	// const searchMenuToggle = () => {
+	// 	setSearchMenuOpen((prev) => !prev);
+	// };
 
 	const pathname = window.location.href;
 
@@ -60,23 +72,6 @@ export default function HomePage() {
 							/>
 						</a>
 					</div>
-
-					{/* <input
-						type="search"
-						placeholder="Search..."
-						onChange={(e) => setSearchInput(e.target.value)}
-						value={searchInput}
-						// TODO: update search placeholder upon theme change - need to set a new class or use computed CSS values (can't be inline styled)
-						style={
-							theme === "light"
-								? {
-										backgroundColor: "#ff0",
-										// color: "black",
-										borderRadius: "10px",
-								  }
-								: { borderRadius: "10px" }
-						}
-					/> */}
 					<div className="navWrapper">
 						<div className="searchWrapper">
 							<button>
@@ -85,9 +80,17 @@ export default function HomePage() {
 									className="searchIcon"
 									color={theme === "dark" ? "white" : "black"}
 									size={20}
+									onClick={openSearch}
 								></FaSearch>
 							</button>
-							<aside></aside>
+							{searchMenuOpen && (
+								<SearchModal
+									// searchMenuOpen={searchMenuOpen}
+									searchInput={searchInput}
+									setSearchInput={setSearchInput}
+									closeSearch={closeSearch}
+								/>
+							)}
 						</div>
 						<nav className="nav">
 							<ul>
