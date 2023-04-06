@@ -34,16 +34,16 @@ export default function SearchModal({
 	return (
 		<div
 			className={styles.modalOverlay}
-			onClick={closeSearch}
+			// onClick={closeSearch}
 		>
 			<div
 				className={styles.modalContentContainer}
-				onClick={(e: any) => {
-					e.preventDefault();
-					e.stopPropagation();
-					e.stopImmediatePropagation();
-					return false;
-				}}
+				// onClick={(e: any) => {
+				// 	e.preventDefault();
+				// 	e.stopPropagation();
+				// 	e.stopImmediatePropagation();
+				// 	return false;
+				// }}
 			>
 				<header className={styles.docSearchBar}>
 					<form
@@ -57,7 +57,7 @@ export default function SearchModal({
 						>
 							<FaSearch
 								size={15}
-								color={"black"}
+								color={"white"}
 								className={styles.docSearchIcon}
 							></FaSearch>
 						</label>
@@ -66,6 +66,7 @@ export default function SearchModal({
 							style={{ display: "none" }}
 						></div>
 						<input
+							className={styles.docSearchInput}
 							type="search"
 							name="docsearch-input"
 							id="docsearch-input"
@@ -86,6 +87,10 @@ export default function SearchModal({
 							title="Clear the query"
 							className={styles.docSearchReset}
 							style={{ display: "none" }}
+							onClick={() => {
+								console.log("HEY");
+								setSearchInput("");
+							}}
 						>
 							{/* FaSistrix */}
 							{/* FaCaretDown */}

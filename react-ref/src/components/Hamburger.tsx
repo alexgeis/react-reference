@@ -25,7 +25,7 @@ export default function Hamburger({
 	closeMenu,
 	theme,
 }: hamburgerProps) {
-	if (pathname?.includes("localhost")) console.log("local environment");
+	// if (pathname?.includes("localhost")) console.log("local environment");
 
 	const urlPath = pathname?.split("/").slice(3).join("/");
 

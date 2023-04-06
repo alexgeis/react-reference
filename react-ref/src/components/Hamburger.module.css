@@ -14,7 +14,7 @@
 
 	width: max-content;
 	cursor: pointer;
-	z-index: 1003;
+	z-index: 99;
 }
 /* individual ham menu lines */
 .hamburgerBox div {

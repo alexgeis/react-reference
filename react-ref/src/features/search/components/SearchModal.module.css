@@ -7,28 +7,58 @@
 	width: 100vw;
 	/* or try 100% */
 	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.7);
-	z-index: 9;
+	/* background-color: rgba(0, 0, 0, 0.7); */
+	background-color: var(--dark-bg-color);
+	z-index: 7000;
 }
 
 .modalContentContainer {
-	width: 320px;
+	width: 100%;
+	height: 100%;
 	padding: 0 10px;
 	margin: 0 auto;
 
 	border: 1px white solid;
 	border-radius: 15px;
 
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 1fr 2fr 1fr;
-	grid-column-gap: 0px;
-	grid-row-gap: 0px;
-	z-index: 99;
+	z-index: 7099;
 }
 
-.header {
-	text-align: center;
+.docSearchBar {
+	display: flex;
+	align-items: center;
+	gap: var(--flex-gap);
+	padding: 0.75rem 1.25rem;
+}
+.docSearchForm {
+	height: 2.5rem;
+	padding: 0 12px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	width: 100%;
+	background-color: var(--dark-bg-secondary-color);
+	border-radius: 9999px;
+}
+.docSearchIconLabel {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* padding: 0 4px; */
+}
+.docSearchInput {
+	appearance: none;
+	background: transparent;
+	border: 0;
+	flex: 1 1;
+	line-height: 1.25;
+	padding: 0.25rem 0 0.25rem 8px;
+}
+.docSearchInput:active,
+.docSearchInput:focus {
+	outline: 0;
+	outline-color: transparent;
+	outline-style: none;
 }
 .body {
 	width: 100%;
