@@ -93,11 +93,15 @@ export default function SearchModal({
 							<AiOutlineClose
 								size={20}
 								color={"white"}
-								onClick={closeSearch}
 							></AiOutlineClose>
 						</button>
 					</form>
-					<button className={styles.docSearchCancel}>Cancel</button>
+					<button
+						className={styles.docSearchCancel}
+						onClick={closeSearch}
+					>
+						Cancel
+					</button>
 				</header>
 				<div className={styles.docSearchDropdown}>
 					<div className={styles.docSearchDropdownContainer}>

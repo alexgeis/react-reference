@@ -16,8 +16,10 @@ export default function HomePage() {
 	// HAMBURGER LOGIC
 	// const [hamOpen, setHamOpen] = useState(false);
 	const [hamOpen, setHamOpen] = useLocalStorage("hamOpen", false);
+	const [searchMenuOpen, setSearchMenuOpen] = useState<boolean>(false);
 
 	const hamburgerMenuToggle = () => {
+		if (!hamOpen) setSearchMenuOpen(false);
 		setHamOpen(!hamOpen);
 	};
 	const closeMenu = () => {
@@ -25,12 +27,12 @@ export default function HomePage() {
 	};
 
 	const [searchInput, setSearchInput] = useState<string>("");
-	const [searchMenuOpen, setSearchMenuOpen] = useState<boolean>(false);
 	const closeSearch = () => {
 		setSearchMenuOpen(false);
 		// setSearchInput("");
 	};
 	const openSearch = () => {
+		setHamOpen(false);
 		setSearchMenuOpen(true);
 	};
 	// const searchMenuToggle = () => {
